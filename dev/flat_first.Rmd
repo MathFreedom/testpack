@@ -1,0 +1,71 @@
+---
+title: "Factorial"
+output: html_document
+editor_options: 
+  chunk_output_type: console
+---
+
+<!-- Run this 'development' chunk -->
+<!-- Store every call to library() that you need to explore your functions -->
+
+```{r development, include=FALSE}
+library(testthat)
+```
+
+<!--
+ You need to run the 'description' chunk in the '0-dev_history.Rmd' file before continuing your code there.
+
+If it is the first time you use {fusen}, after 'description', you can directly run the last chunk of the present file with inflate() inside.
+--> 
+
+```{r development-load}
+# Load already included functions if relevant
+pkgload::load_all(export_all = FALSE)
+```
+# title
+    
+```{r function-title}
+#' Factorial
+#' 
+#' that returns the factorial value of an integer
+#' 
+#' @return integer
+#' @exemple
+#' @export
+Fac <- function(n){
+  x <- 1
+  for (i in 1:n) {
+    x <- x*i
+    }
+  return(x)
+}
+```
+  
+```{r example-title}
+Fac(10)
+```
+  
+```{r tests-title}
+test_that("title works", {
+  expect_true(inherits(title, "function")) 
+})
+```
+  
+
+
+```{r development-inflate, eval=FALSE}
+# Keep eval=FALSE to avoid infinite loop in case you hit the knit button
+# Execute in the console directly
+fusen::inflate(flat_file = "dev/flat_first.Rmd", vignette_name = "Factorial")
+```
+
+
+# Inflate your package
+
+You're one inflate from paper to box.
+Build your package from this very Rmd using `fusen::inflate()`
+
+- Verify your `"DESCRIPTION"` file has been updated
+- Verify your function is in `"R/"` directory
+- Verify your test is in `"tests/testthat/"` directory
+- Verify this Rmd appears in `"vignettes/"` directory
